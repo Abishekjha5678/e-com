@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="p-4 m-4">
+        <div class="col-lg-5 mx-auto border rounded p-4"> 
+            <h3 class="alert alert-premium border rounded">Create An Account</h3>
+            <form action="/signup" method="POST">
+            
+            {% csrf_token %}
+            {% if error_message %}
+                <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+                </div>
+            {% endif %}
+            <!--First name-->
+                <div class="form-group">
+                  <label for="">First name</label>
+                  <input type="text" value= '{{ values.first_name }}' name="Firstname"  class="form-control form-control-sm" placeholder="First name">
+                </div>
+            <!--Last name-->
+                <div class="form-group">
+                  <label for="">Last name</label>
+                  <input type="text" value='{{ values.last_name }}' name="Lastname" id="" class="form-control form-control-sm" placeholder="Last name">
+                </div>
+            <!--Phone field-->
+                <div class="form-group">  
+                  <label for="">Phone Number</label>
+                  <input type="text" name="number" value = '{{ values.number }}' id="" class="form-control form-control-sm" placeholder="Phone Number" >
+                </div>
+            <!--Email-->
+                <div class="form-group">  
+                  <label for="">Email</label>
+                  <input type='email' value='{{ values.email }}' name="email" id="" class="form-control form-control-sm" placeholder="Email" >
+                </div>
+            <!--Password-->
+                <div class="form-group">
+                  <label for="">Password</label>
+                  <input type="password" name="password" id="" class="form-control form-control-sm" placeholder="********" >  
+                </div>
+            
+            <!--Confirm Password--> 
+            <div class="form-group">
+                  <label for="">Confirm Password</label>
+                  <input type="password" name="confirmpassword" id="" class="form-control form-control-sm" placeholder="********" >  
+                </div>
+                  
+            <!--Gender-->
+                <div class="form-group my-3">
+                    <input class="btn btn-sm btn-info" type="submit" value="Sign up">  
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
